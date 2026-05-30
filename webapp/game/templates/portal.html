@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+<!-- extends untuk menggunakan template -->
+
+<!-- isikan block per nama nya -->
+ {% block page_title %} Portal Game {% endblock %}
+ <!-- sisakan isi <main> aja -->
+ {% block content %}
+
+  <section class="hero">
+          <div class="container">
+            <div class="hero-box">
+              <div class="eyebrow">{{portal_name}}</div>
+              <h1>Pilih dunia permainan yang ingin kamu masuki</h1>
+              <p>
+                Halaman portal ini menampilkan beberapa game utama dengan deskripsi singkat
+                dan tombol masuk langsung ke route masing-masing.
+              </p>
+            </div>
+          </div>
+  </section>
+
+  <section id="portal-list" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Daftar Portal Game</h2>
+              <p>
+                Setiap kartu di bawah ini mengarah ke halaman game yang berbeda,
+                dengan gaya visual yang tetap konsisten seperti landing page sebelumnya.
+              </p>
+    </div>
+
+    <div class="portal-grid">
+      <article class="portal-card">
+        <div class="card-cover" style="background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80');">
+          <div class="card-label">MOBA Arena</div>
+        </div>
+        <div class="card-body">
+                  <h3>Portal MOBA</h3>
+                  <p>
+                    Masuk ke arena 5v5 penuh strategi, objective map, dan pertarungan tim cepat
+                    untuk push rank dan kuasai lane.
+                  </p>
+                  <a href="/game/moba" class="portal-btn">Lihat Mobile Legends</a>
+        </div>
+      </article>
+
+      <article class="portal-card">
+        <div class="card-cover" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80');">
+          <div class="card-label">Open World Adventure</div>
+        </div>
+        <div class="card-body">
+          <h3>Portal Genshin</h3>
+                  <p>
+                    Jelajahi dunia luas, selesaikan quest, kumpulkan karakter,
+                    dan buka area baru dengan nuansa action RPG eksploratif.
+                  </p>
+                  <a href="/game/genshin" class="portal-btn">Lihat Genshin Impact</a>
+        </div>
+      </article>
+
+      <article class="portal-card">
+        <div class="card-cover" style="background-image:url('https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=1200&q=80');">
+          <div class="card-label">Coming Soon</div>
+        </div>
+                <div class="card-body">
+                  <h3>Portal Dota</h3>
+                  <p>
+                    Slot tambahan untuk game berikutnya, misalnya RPG lain, strategy game,
+                    atau halaman event musiman.
+                  </p>
+                  <a href="/game/dota" class="portal-btn">Lihat Dota 2</a>
+                </div>
+              </article>
+            </div>
+          </div>
+  </section>
+      
+  {% endblock %}

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Romantic Neon Flower</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:#020b11;
+    font-family:Arial, sans-serif;
+    position:relative;
+}
+
+/* ===== BINTANG ===== */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    background-image:
+    radial-gradient(white 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    opacity:0.3;
+
+    animation:stars 20s linear infinite;
+}
+
+@keyframes stars{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(40px);
+    }
+}
+
+/* ===== TEXT ===== */
+
+#text{
+
+    position:absolute;
+    top:40px;
+
+    color:white;
+    font-size:60px;
+    font-weight:bold;
+
+    text-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan,
+    0 0 40px cyan;
+
+    z-index:5;
+
+    animation:
+    glow 2s infinite alternate,
+    floatText 4s ease-in-out infinite;
+}
+
+.name{
+
+    position:absolute;
+    top:130px;
+
+    color:#ffb6ff;
+
+    font-size:30px;
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    text-shadow:
+    0 0 10px pink,
+    0 0 20px violet;
+
+    z-index:5;
+
+    display:none;
+
+    animation:
+    glowName 2s infinite alternate,
+    floatText 4s ease-in-out infinite;
+}
+
+@keyframes glow{
+
+    from{
+        opacity:.7;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes glowName{
+
+    from{
+        opacity:.7;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes floatText{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* ===== LOVE BUTTON ===== */
+
+.love-btn{
+    width:95px;
+    height:95px;
+
+    border-radius:50%;
+    border:3px solid cyan;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:45px;
+    color:pink;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 15px cyan,
+    0 0 35px cyan;
+
+    animation:pulse 2s infinite;
+
+    z-index:5;
+
+    transition:.4s;
+}
+
+.love-btn:hover{
+    transform:scale(1.1);
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.1);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.info{
+    color:white;
+    margin-top:18px;
+    z-index:5;
+}
+
+/* ===== FLOWERS ===== */
+
+.flowers{
+    position:absolute;
+
+    bottom:40px;
+
+    display:none;
+
+    gap:80px;
+
+    z-index:3;
+}
+
+/* ===== FLOWER ===== */
+
+.flower{
+    position:relative;
+    width:120px;
+    height:320px;
+
+    animation:sway 4s ease-in-out infinite alternate;
+}
+
+@keyframes sway{
+
+    from{
+        transform:rotate(-4deg);
+    }
+
+    to{
+        transform:rotate(4deg);
+    }
+}
+
+/* ===== STEM ===== */
+
+.stem{
+    position:absolute;
+    bottom:0;
+    left:50%;
+
+    width:8px;
+    height:0;
+
+    transform:translateX(-50%);
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(to top,#00ff84,#00ffd5);
+
+    box-shadow:
+    0 0 15px cyan;
+
+    animation:growStem 3s forwards;
+}
+
+@keyframes growStem{
+
+    from{
+        height:0;
+    }
+
+    to{
+        height:200px;
+    }
+}
+
+/* ===== FLOWER HEAD ===== */
+
+.flower-head{
+    position:absolute;
+    top:0;
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    scale(0);
+
+    animation:bloom 2s 2.5s forwards;
+}
+
+@keyframes bloom{
+
+    0%{
+        transform:
+        translateX(-50%)
+        scale(0);
+    }
+
+    70%{
+        transform:
+        translateX(-50%)
+        scale(1.2);
+    }
+
+    100%{
+        transform:
+        translateX(-50%)
+        scale(1);
+    }
+}
+
+/* ===== PETAL ===== */
+
+.petal{
+    position:absolute;
+
+    width:65px;
+    height:90px;
+
+    background:#c8ffff;
+
+    border-radius:50%;
+
+    left:-32px;
+    top:-32px;
+
+    opacity:.9;
+
+    transform-origin:center bottom;
+
+    box-shadow:
+    0 0 20px cyan,
+    0 0 40px cyan;
+
+    animation:petalMove 3s ease-in-out infinite;
+}
+
+@keyframes petalMove{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.p1{
+    transform:rotate(0deg) translateY(-28px);
+}
+
+.p2{
+    transform:rotate(72deg) translateY(-28px);
+}
+
+.p3{
+    transform:rotate(144deg) translateY(-28px);
+}
+
+.p4{
+    transform:rotate(216deg) translateY(-28px);
+}
+
+.p5{
+    transform:rotate(288deg) translateY(-28px);
+}
+
+/* ===== CENTER ===== */
+
+.center{
+    position:absolute;
+
+    width:38px;
+    height:38px;
+
+    background:gold;
+
+    border-radius:50%;
+
+    top:-6px;
+    left:-19px;
+
+    box-shadow:
+    0 0 20px yellow,
+    0 0 40px gold;
+
+    animation:centerGlow 2s infinite alternate;
+}
+
+@keyframes centerGlow{
+
+    from{
+        box-shadow:
+        0 0 10px yellow,
+        0 0 20px gold;
+    }
+
+    to{
+        box-shadow:
+        0 0 25px yellow,
+        0 0 50px gold;
+    }
+}
+
+/* ===== LEAF ===== */
+
+.leaf{
+    position:absolute;
+
+    width:55px;
+    height:28px;
+
+    background:#00ffaa;
+
+    border-radius:50px 0;
+
+    box-shadow:
+    0 0 12px cyan;
+
+    opacity:0;
+
+    animation:showLeaf 1s forwards;
+}
+
+.leaf1{
+    left:50%;
+    bottom:90px;
+
+    transform:rotate(40deg);
+
+    animation-delay:1.5s;
+}
+
+.leaf2{
+    right:50%;
+    bottom:130px;
+
+    transform:rotate(-140deg);
+
+    animation-delay:2s;
+}
+
+@keyframes showLeaf{
+
+    to{
+        opacity:1;
+    }
+}
+
+/* ===== TANAH ===== */
+
+.ground{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:120px;
+
+    background:
+    linear-gradient(to top,#041106,#000);
+
+    z-index:1;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BAGIAN PERTAMA -->
+<h1 id="text">Klik Love ❤️</h1>
+
+<div class="love-btn" id="loveBtn" onclick="showFlowers()">
+    ❤️
+</div>
+
+<p class="info" id="infoText">
+    Klik tombol love nya
+</p>
+
+<!-- BAGIAN KEDUA -->
+<h2 class="name" id="nameText">
+    Nama Kamu ❤️
+</h2>
+
+<!-- FLOWERS -->
+<div class="flowers" id="flowers">
+
+    <div class="flower">
+
+        <div class="stem"></div>
+
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+
+        <div class="flower-head">
+
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+    </div>
+
+    <div class="flower">
+
+        <div class="stem"></div>
+
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+
+        <div class="flower-head">
+
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+    </div>
+
+    <div class="flower">
+
+        <div class="stem"></div>
+
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+
+        <div class="flower-head">
+
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- TANAH -->
+<div class="ground"></div>
+
+<script>
+
+function showFlowers(){
+
+    document.getElementById("text").innerHTML =
+    "I Love You ❤️";
+
+    document.getElementById("loveBtn").style.display =
+    "none";
+
+    document.getElementById("infoText").style.display =
+    "none";
+
+    document.getElementById("flowers").style.display =
+    "flex";
+
+    document.getElementById("nameText").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>

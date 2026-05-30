@@ -1,0 +1,33 @@
+{% extends 'base.html' %}  
+<!-- extends untuk menggunakan template -->
+
+<!-- isikan block per nama nya -->
+{% block page_title %} Beranda {% endblock %}
+<!-- sisakan isi <main> aja -->
+{% block content %}
+
+  <main>
+    <section class="card">
+      <h2>Pengantar</h2>
+      <p>
+        Selamat datang di website profil sederhana saya.<br>
+          Website ini dibuat untuk latihan HTML & CSS dasar.<br>
+        Situs ini berisi biodata, hobi, dan cita-cita saya sebagai siswa HSI Boarding School Purworejo.<br>
+        Silakan jelajahi tautan navigasi di atas untuk mengenal saya lebih dekat disini saya akan memperlihatkan beberapa data saya.
+       
+    </p>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Minat Saya</h2>
+      <img src="https://logique.s3.ap-southeast-1.amazonaws.com/2025/08/8VvQVP09-PcijBzzN-developer.jpg" alt="Foto Minat" class="foto">
+      <p>
+        Saya memilih gambar di atas karena karakter tersebut <b>melambangkan semangat</b>, 
+        <i>memberi motivasi</i>, dan <u>mewakili hobi saya </u>. 
+        Gambar ini juga sederhana, tidak <s>terlalu berlebihan</s>, 
+        tetapi tetap menarik untuk dilihat.seperti yang kalian lihat saya ingin menjadi disigner sekaligus <b>programer</b>.
+      </p>
+    </section>
+  </main>
+{% endblock %}

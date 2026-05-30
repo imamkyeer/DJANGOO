@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- extends untuk make template -->
+
+<!-- isi block-nya per nama -->
+{% block title %} Website Profil Santri {% endblock %}
+
+<!-- isi main doang -->
+{% block content %}
+<div class="box">
+  <h3 class="box-title">Pengantar</h3>
+  <p>
+    Selamat datang di website profil sederhana ini. Website ini dibuat untuk
+    latihan dasar
+    <b>HTML</b> dan <b>CSS</b>. Kamu akan menemukan pengantar di halaman ini dan
+    biodata lengkap di halaman lainnya.
+  </p>
+</div>
+
+<div class="box" style="text-align: center">
+  <h3 class="box-title">Avatar Impian</h3>
+  <img src="/static/images/gambarbos.jpeg" class="avatar" alt="avatar impian" />
+  <p>Avatar ini menggambarkan impianku di masa depan nanti.</p>
+</div>
+
+<div class="box">
+  <h3 class="box-title">Alamat Sekolah</h3>
+  <p>Jl. Brengkol, Purworejo, Jawa Tengah, Indonesia</p>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}  
+<!-- extends untuk menggunakan template -->
+
+<!-- isikan block per nama nya -->
+{% block content %}
+  <header class="header">
+      <h1>Formulir Feedback</h1>
+      <p>Kritik, saran, dan masukan untuk website ini</p>
+    </header>
+
+    <main>
+      <div class="box">
+        <h2 class="box-title">Formulir Umpan Balik</h2>
+        <form action="https://httpbin.org/post" method="POST">
+          <div class="form-group">
+            <label for="nama">Nama (Opsional):</label>
+            <input type="text" id="nama" name="nama" placeholder="Nama Anda">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="rating">Rating Website (1–10):</label>
+            <input type="number" id="rating" name="rating" min="1" max="10" required>
+          </div>
+
+          <div class="form-group">
+            <label>Apakah Anda merekomendasikan website ini?</label><br>
+            <input type="radio" id="ya" name="rekomendasi" value="Ya" required> <label for="ya">Ya</label>
+            <input type="radio" id="tidak" name="rekomendasi" value="Tidak"> <label for="tidak">Tidak</label>
+          </div>
+
+          <div class="form-group">
+            <label for="pesan">Pesan/Saran:</label>
+            <textarea id="pesan" name="pesan" placeholder="Tulis saran Anda..." required></textarea>
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit">Kirim</button>
+            <button type="reset">Atur Ulang</button>
+          </div>
+        </form>
+      </div>
+    </main>
+{% endblock %}

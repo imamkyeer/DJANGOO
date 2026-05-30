@@ -1,0 +1,52 @@
+{% extends 'base.html' %}  
+<!-- extends untuk menggunakan template -->
+
+<!-- isikan block per nama nya -->
+
+<!-- sisakan isi <main> aja -->
+{% block content %}
+    
+    <main>
+      <div class="box">
+        <h2 class="box-title">Jadwal Kegiatan Belajar</h2>
+
+        <!-- Pembungkus agar tabel tetap responsif dan di tengah -->
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2">Waktu</th>
+                <th rowspan="2">Hari</th>
+                <th rowspan="2">Kegiatan</th>
+              </tr>
+              <tr>
+                <th>Mulai</th>
+                <th>Selesai</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>08:00</td><td>10:00</td><td>Senin</td><td>Pelajaran Web Dasar (Teori HTML)</td>
+              </tr>
+              <tr>
+                <td>10:00</td><td>10:30</td><td rowspan="2">Senin</td><td>Istirahat (Snack & Shalat Dhuha)</td>
+              </tr>
+              <tr>
+                <td>10:30</td><td>12:00</td><td>Praktikum HTML Table</td>
+              </tr>
+              <tr>
+                <td>14:00</td><td>16:00</td><td>Selasa</td><td>Pelajaran CSS & Box Model</td>
+              </tr>
+              <tr>
+                <td>16:00</td><td>16:45</td><td>Selasa</td><td>Olahraga (Renang)</td>
+              </tr>
+              <tr>
+                <td>08:00</td><td>10:00</td><td>Rabu</td><td>Praktikum Flexbox</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% block content %}
+
+<header class="header">
+    <img src="/static/images/hsi.webp" class="logo" alt="SMA IT HSI PURWOREJO" />
+    <h1>HSI Boarding School Purworejo</h1>
+    <h4>14 September 2025</h4>
+</header>
+<div class="judul">
+    <nav class="main-nav">
+    <ul>
+        <li><a href="{% url 'home' %}">Beranda</a></li>
+        <li><a href="{% url 'biodata' %}">Biodata</a></li>
+        <li><a href="{% url 'jadwal' %}">Jadwal</a></li>
+        <li><a href="{% url 'galeri' %}">Galeri</a></li>
+        <li><a href="{% url 'feedback' %}">Feedback</a></li>
+    </ul>
+    </nav>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg">
+
+    <h1 class="text-2xl font-bold mb-6 text-center">Tambah Siswa</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label class="block mb-2">Nama</label>
+            <input type="text" name="nama"
+                   class="w-full border p-3 rounded-lg">
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2">Umur</label>
+            <input type="number" name="umur"
+                   class="w-full border p-3 rounded-lg">
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2">Tanggal Lahir</label>
+            <input type="date" name="tgl_lahir"
+                   class="w-full border p-3 rounded-lg">
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2">Nilai Akhir</label>
+            <input type="number" name="nilai_akhir"
+                   class="w-full border p-3 rounded-lg">
+        </div>
+
+        <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg">
+            Simpan
+        </button>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Peminjaman
+{% endblock %}
+
+
+{% block content %}
+
+<div class="flex justify-between items-center mb-6">
+
+    <div>
+        <p class="text-gray-500 text-sm">
+            Catat peminjaman dan pengembalian buku.
+        </p>
+
+        <h1 class="text-3xl font-bold text-gray-800">
+            Peminjaman
+        </h1>
+    </div>
+
+
+    <a href="{% url 'tambah_peminjaman' %}"
+       class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-semibold">
+
+        ⊞ Pinjam Buku
+
+    </a>
+
+</div>
+
+
+
+
+<div class="bg-white rounded-2xl shadow overflow-hidden">
+
+
+<table class="w-full text-left">
+
+
+<thead class="bg-slate-100 text-gray-600">
+
+<tr>
+
+<th class="p-4">ID</th>
+<th class="p-4">Nama Peminjam</th>
+<th class="p-4">Buku</th>
+<th class="p-4">Tanggal Pinjam</th>
+<th class="p-4">Jatuh Tempo</th>
+<th class="p-4">Keperluan</th>
+<th class="p-4">Petugas</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-center">Aksi</th>
+
+</tr>
+
+</thead>
+
+
+
+
+<tbody>
+
+
+{% for item in data %}
+
+
+<tr class="border-b hover:bg-gray-50">
+
+
+<td class="p-4">
+{{ item.id }}
+</td>
+
+
+
+<td class="p-4 font-medium">
+{{ item.nama_peminjam }}
+</td>
+
+
+
+<td class="p-4">
+{{ item.judul }}
+</td>
+
+
+
+<td class="p-4">
+{{ item.tanggal_pinjam }}
+</td>
+
+
+
+<td class="p-4">
+{{ item.jatuh_tempo }}
+</td>
+
+
+
+<td class="p-4">
+{{ item.keperluan }}
+</td>
+
+
+
+<td class="p-4">
+{{ item.petugas }}
+</td>
+
+
+
+<td class="p-4">
+
+{% if item.status == 'Dipinjam' %}
+
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
+Dipinjam
+</span>
+
+{% else %}
+
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+Dikembalikan
+</span>
+
+{% endif %}
+
+</td>
+
+
+
+<td class="p-4 text-center">
+
+
+{% if item.status == 'Dipinjam' %}
+
+<form method="POST"
+      action="{% url 'kembalikan_buku' item.id %}">
+
+{% csrf_token %}
+
+<button
+class="bg-green-600 text-white px-4 py-2 rounded-xl text-sm">
+
+Kembalikan
+
+</button>
+
+</form>
+
+
+{% endif %}
+
+
+
+</td>
+
+
+
+</tr>
+
+
+{% empty %}
+
+
+<tr>
+
+<td colspan="9"
+class="text-center p-10 text-gray-400">
+
+Belum ada peminjaman
+
+</td>
+
+</tr>
+
+
+{% endfor %}
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+{% endblock %}

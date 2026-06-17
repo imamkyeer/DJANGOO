@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Detail Buku - {{ buku.judul }}
+{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto">
+    <div class="flex justify-between items-center mb-8">
+        <h1 class="text-4xl font-bold text-slate-800">
+            Detail Informasi Buku
+        </h1>
+        <a href="{% url 'daftar_buku' %}"
+           class="bg-slate-600 hover:bg-slate-700 text-white px-5 py-3 rounded-xl transition duration-200 shadow-sm">
+            ← Kembali
+        </a>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden">
+        <div class="p-6 bg-slate-50 border-b border-slate-100">
+            <h2 class="text-2xl font-bold text-slate-700">{{ buku.judul }}</h2>
+            <p class="text-slate-500 text-sm mt-1">ID Buku: #{{ buku.id }}</p>
+        </div>
+
+        <div class="divide-y divide-slate-100">
+            <div class="grid grid-cols-3 p-4 hover:bg-slate-50/50 transition">
+                <div class="text-sm font-semibold text-slate-500">Pengarang</div>
+                <div class="col-span-2 text-slate-800">{{ buku.pengarang }}</div>
+            </div>
+            <div class="grid grid-cols-3 p-4 hover:bg-slate-50/50 transition">
+                <div class="text-sm font-semibold text-slate-500">Kategori</div>
+                <div class="col-span-2 text-slate-800">{{ buku.kategori }}</div>
+            </div>
+            <div class="grid grid-cols-3 p-4 hover:bg-slate-50/50 transition">
+                <div class="text-sm font-semibold text-slate-500">Penerbit</div>
+                <div class="col-span-2 text-slate-800">{{ buku.penerbit }}</div>
+            </div>
+            <div class="grid grid-cols-3 p-4 hover:bg-slate-50/50 transition">
+                <div class="text-sm font-semibold text-slate-500">Tahun Terbit</div>
+                <div class="col-span-2 text-slate-800">{{ buku.tahun_terbit|default:"-" }}</div>
+            </div>
+            <div class="grid grid-cols-3 p-4 hover:bg-slate-50/50 transition">
+                <div class="text-sm font-semibold text-slate-500">Lokasi Rak</div>
+                <div class="col-span-2">
+                    <span class="inline-block bg-amber-50 text-amber-800 text-xs px-2.5 py-1 rounded-md font-medium border border-amber-200">
+                        {{ buku.rak }}
+                    </span>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 p-4 hover:bg-slate-50/50 transition">
+                <div class="text-sm font-semibold text-slate-500">Stok Tersedia</div>
+                <div class="col-span-2 text-slate-800 font-semibold">{{ buku.stok }} Ekslempar</div>
+            </div>
+            <div class="grid grid-cols-3 p-4 hover:bg-slate-50/50 transition">
+                <div class="text-sm font-semibold text-slate-500">Deskripsi / Sinopsis</div>
+                <div class="col-span-2 text-slate-600 leading-relaxed">{{ buku.deskripsi|default:"Tidak ada deskripsi." }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

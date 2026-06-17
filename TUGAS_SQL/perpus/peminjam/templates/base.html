@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PUSTAKA{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 font-sans antialiased text-gray-900">
+
+<div class="flex min-h-screen">
+    
+    <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between hidden md:flex">
+        <div class="p-6">
+            <div class="flex items-center space-x-3 mb-8">
+                <span class="text-2xl font-bold text-blue-600">📚 PUSTAKA</span>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="{% url 'dashboard' %}" 
+                   class="flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-colors {% if request.resolver_match.url_name == 'dashboard' %}bg-blue-50 text-blue-600{% else %}text-gray-600 hover:bg-slate-50 hover:text-gray-900{% endif %}">
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="{% url 'daftar_buku' %}" 
+                   class="flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-colors {% if 'buku' in request.path %}bg-blue-50 text-blue-600{% else %}text-gray-600 hover:bg-slate-50 hover:text-gray-900{% endif %}">
+                    <span>📕</span>
+                    <span>Daftar Buku</span>
+                </a>
+
+                <a href="{% url 'daftar_peminjaman' %}" 
+                   class="flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-colors {% if 'peminjaman' in request.path %}bg-blue-50 text-blue-600{% else %}text-gray-600 hover:bg-slate-50 hover:text-gray-900{% endif %}">
+                    <span>📖</span>
+                    <span>Peminjaman</span>
+                </a>
+
+                <a href="{% url 'user_list' %}" 
+                   class="flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-colors {% if 'user' in request.path %}bg-blue-50 text-blue-600{% else %}text-gray-600 hover:bg-slate-50 hover:text-gray-900{% endif %}">
+                    <span>👥</span>
+                    <span>Manajemen User</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="p-6 border-t border-slate-100 text-xs text-gray-400 text-center">
+            &copy; 2026 Pustaka App
+        </div>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-12 overflow-y-auto">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</div>
+
+</body>
+</html>

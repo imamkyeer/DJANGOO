@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Tambah User
+{% endblock %}
+
+{% block content %}
+<div class="mb-6">
+    <a href="{% url 'user_list' %}" class="text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1 mb-1">
+        ← Kelola User
+    </a>
+    <h1 class="text-3xl font-bold text-gray-800">
+        Tambah User
+    </h1>
+</div>
+
+{% if error %}
+<div class="mb-4 p-3 bg-red-100 text-red-700 rounded-lg max-w-2xl">
+    {{ error }}
+</div>
+{% endif %}
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 max-w-2xl">
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                Nama User
+            </label>
+            <input 
+                type="text"
+                name="nama"
+                required
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Masukkan Nama Lengkap">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                Kelas
+            </label>
+            <input 
+                type="text"
+                name="kelas"
+                required
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Contoh: XII PPLG 1">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                NIS
+            </label>
+            <input 
+                type="text"
+                name="nis"
+                required
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Masukkan NIS">
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                Status
+            </label>
+            <select 
+                name="status"
+                class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="Aktif">Aktif</option>
+                <option value="Nonaktif">Nonaktif</option>
+            </select>
+        </div>
+
+        <div class="flex justify-end gap-3 border-t border-gray-100 pt-4">
+            <a href="{% url 'user_list' %}" class="border border-gray-200 hover:bg-gray-50 text-gray-600 px-6 py-3 rounded-xl font-medium text-sm transition-colors">
+                Batal
+            </a>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium text-sm transition-colors">
+                Simpan User
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

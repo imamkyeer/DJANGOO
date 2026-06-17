@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %} Daftar Buku {% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-8">
+    <h1 class="text-4xl font-bold text-gray-800">Daftar Buku</h1>
+    <a href="{% url 'tambah_buku' %}" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-bold transition">
+        + Tambah Buku
+    </a>
+</div>
+
+<div class="bg-white rounded-2xl shadow overflow-hidden">
+    <table class="w-full border-collapse text-left">
+        <thead class="bg-slate-200 text-gray-700 font-bold">
+            <tr>
+                <th class="p-4 border-b">ID</th>
+                <th class="p-4 border-b">Judul</th>
+                <th class="p-4 border-b">Pengarang</th>
+                <th class="p-4 border-b">Kategori</th>
+                <th class="p-4 border-b text-center">Stok</th>
+                <th class="p-4 border-b text-center">Aksi</th>
+            </tr>
+        </thead>
+        <tbody class="text-gray-600">
+            {% for buku in buku_list %}
+            <tr class="hover:bg-slate-50 transition">
+                <td class="p-4 border-b">{{ buku.id }}</td>
+                <td class="p-4 border-b font-medium text-gray-900">{{ buku.judul }}</td>
+                <td class="p-4 border-b">{{ buku.pengarang }}</td>
+                <td class="p-4 border-b">
+                    <span class="bg-slate-100 text-slate-800 text-xs px-2.5 py-1 rounded font-semibold">
+                        {{ buku.kategori }}
+                    </span>
+                </td>
+                <td class="p-4 border-b text-center">{{ buku.stok }}</td>
+                <td class="p-4 border-b text-center space-x-1">
+                    <a href="{% url 'detail_buku' buku.id %}" class="bg-slate-700 hover:bg-slate-800 text-white px-3 py-2 rounded text-sm font-medium transition">
+                        Detail
+                    </a>
+                    <a href="{% url 'edit_buku' buku.id %}" class="bg-yellow-600 hover:bg-yellow-700 text-white px-3 py-2 rounded text-sm font-medium transition">
+                        Edit
+                    </a>
+                    <form method="POST" action="{% url 'hapus_buku' buku.id %}" onsubmit="return confirm('Yakin ingin menghapus buku ini?');" class="inline-block">
+                        {% csrf_token %}
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-sm font-medium transition">
+                            Hapus
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center p-12 text-gray-400">
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <span class="text-xl font-semibold">Belum ada data buku</span>
+                        <p class="text-sm">Silakan klik tombol "+ Tambah Buku" untuk memasukkan data baru.</p>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %} Tambah Buku {% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto mt-6">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">Tambah Buku Baru</h2>
+    
+    <form method="POST" class="bg-white p-8 rounded-lg shadow-md" novalidate>
+        {% csrf_token %}
+        
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Judul Buku</label>
+                <input type="text" name="judul" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masukkan judul buku">
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Pengarang</label>
+                <input type="text" name="pengarang" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nama pengarang">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Kategori</label>
+                <input type="text" name="kategori" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kategori buku">
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Penerbit</label>
+                <input type="text" name="penerbit" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nama penerbit">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mb-4">
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Tahun Terbit</label>
+                <input type="number" name="tahun_terbit" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tahun">
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Rak</label>
+                <select name="rak" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Rak A-01">Rak A-01</option>
+                    <option value="Rak A-02">Rak A-02</option>
+                    <option value="Rak A-03">Rak A-03</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Stok</label>
+                <input type="number" name="stok" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Jumlah">
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Deskripsi</label>
+            <textarea name="deskripsi" rows="4" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tulis deskripsi singkat buku..."></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3">
+            <a href="{% url 'daftar_buku' %}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">Batal</a>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Simpan Buku</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
